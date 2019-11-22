@@ -14,6 +14,7 @@ from protos import pipeline_pb2
 from builders import model_builder
 from libs.exporter import deploy_segmentation_inference_graph
 from libs.constants import CITYSCAPES_LABEL_COLORS, CITYSCAPES_LABEL_IDS
+import pdb
 
 
 slim = tf.contrib.slim
@@ -91,7 +92,8 @@ def run_inference_graph(model, trained_checkpoint_prefix,
         saver.restore(sess, trained_checkpoint_prefix)
 
         for idx, image_path in enumerate(input_images):
-            image_raw = np.array(Image.open(image_path))
+            image_raw = np.array(Image.open(image_path))[:,:,:3] # hack to remove alpha channel
+            #pdb.set_trace()
 
             start_time = timeit.default_timer()
             predictions = sess.run(outputs,

@@ -59,7 +59,7 @@ flags.DEFINE_string('logdir', '',
                     'Directory to save the checkpoints and training summaries.')
 flags.mark_flag_as_required('logdir')
 
-flags.DEFINE_integer('save_interval_secs', 600, # default to 5 min
+flags.DEFINE_integer('save_interval_secs', 3600, # default to 5 min
                      'Time between successive saves of a checkpoint in secs.')
 
 flags.DEFINE_integer('max_checkpoints_to_keep', 15, # might want to cut this down

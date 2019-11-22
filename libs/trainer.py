@@ -256,7 +256,7 @@ def train_segmentation_model(create_model_fn,
         #   should have a way to access the prediction and GT tensor
         if image_summaries:
             graph = tf.get_default_graph()
-            pixel_scaling = max(1, 255 // 19)
+            pixel_scaling = max(1, 255 // 13)
             summ_first_clone_scope = (first_clone_scope + '/'
                 if first_clone_scope else '')
             main_labels = graph.get_tensor_by_name(
