@@ -13,7 +13,7 @@ from google.protobuf import text_format
 from protos import pipeline_pb2
 from builders import model_builder
 from libs.exporter import deploy_segmentation_inference_graph
-from libs.constants import CITYSCAPES_LABEL_COLORS, CITYSCAPES_LABEL_IDS
+from libs.constants import CITYSCAPES_LABEL_COLORS, CITYSCAPES_LABEL_IDS, CARLA_LABEL_COLORS, CARLA_LABEL_IDS
 import pdb
 
 
@@ -132,8 +132,8 @@ def main(_):
                 for dim in FLAGS.pad_to_shape.split(',')]
 
     input_images = _get_images_from_path(FLAGS.input_path)
-    label_map = (CITYSCAPES_LABEL_IDS
-        if FLAGS.label_ids else CITYSCAPES_LABEL_COLORS)
+    label_map = (CARLA_LABEL_IDS
+        if FLAGS.label_ids else CARLA_LABEL_COLORS)
 
     num_classes, segmentation_model = model_builder.build(
         pipeline_config.model, is_training=False)
